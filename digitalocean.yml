@@ -31,3 +31,4 @@ runcmd:
   - "chown -R nickyang:nickyang ansible dotfiles"
   - "cd dotfiles"
   - "stow zsh git neovim vim tmux ssh"
+  - "curl -sSL https://repos.insights.digitalocean.com/install.sh | bash"
