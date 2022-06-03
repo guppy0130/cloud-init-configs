@@ -1,0 +1,31 @@
+#cloud-config
+
+# setup default user + user `nickyang` with ssh key from gh:guppy0130
+users:
+  - "default"
+  - name: "nickyang"
+    groups: "wheel"
+    ssh_import_id:
+      - "gh:guppy0130"
+    lock_passwd: true # no pw
+    shell: "/bin/zsh"
+
+# grab some packages
+package_update: true
+package_upgrade: true
+
+packages:
+  - "git"
+  - "zsh"
+  - "stow"
+  - "neovim"
+
+# configure timezone
+timezone: "America/Los_Angeles"
+runcmd:
+  - "cd /home/nickyang"
+  - "git clone https://github.com/homielabs/ansible"
+  - "git clone https://github.com/guppy0130/dotfiles"
+  - "chown -R nickyang:nickyang ansible dotfiles"
+  - "cd dotfiles"
+  - "stow zsh git neovim vim tmux ssh"
