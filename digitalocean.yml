@@ -9,6 +9,8 @@ users:
       - "gh:guppy0130"
     lock_passwd: true # no pw
     shell: "/bin/zsh"
+    # because password disabled
+    sudo: ALL=(ALL) NOPASSWD:ALL
 
 # grab some packages
 package_update: true
