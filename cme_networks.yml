@@ -1,4 +1,4 @@
 #cloud-config
 
 # configure timezone
-timezone: "America/Los_Angeles"
+timezone: "America/Chicago"

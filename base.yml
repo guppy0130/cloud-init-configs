@@ -1,0 +1,29 @@
+#cloud-config
+
+# setup user `nickyang` with ssh key from gh:guppy0130
+users:
+  - name: "nyang"
+    groups: "wheel"
+    ssh_import_id:
+      - "gh:guppy0130"
+    lock_passwd: true # no pw
+    shell: "/bin/zsh"
+    # because password disabled
+    sudo: ALL=(ALL) NOPASSWD:ALL
+
+# grab some packages
+package_update: true
+package_upgrade: true
+
+packages:
+  - "git"
+  - "zsh"
+  - "stow"
+  - "neovim"
+
+runcmd:
+  - "cd /home/nyang"
+  - "git clone https://github.com/guppy0130/dotfiles"
+  - "chown -R nyang:nyang dotfiles"
+  - "cd dotfiles"
+  - "stow zsh git neovim vim tmux ssh"
